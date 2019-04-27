@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Salsa Jobs - Listado de Ofertas</title>
+    <meta name="description" content="Listado de ofertas de trabajo de calidad" />
+    <link rel="canonical" href="">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #list a {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <h1>Salsa Jobs
+            </h1>
+        </a>
+        <nav>
+            <a href="salaries.html">salarios</a>
+            <a href="poll.html">compartir salario</a>
+            <a href="jobs.html">ofertas</a>
+            <a href="publish.html">publicar oferta</a>
+        </nav>
+    </header>
+    <main id="list">
+
+    </main>
+    <footer> 2019 - Salsa jobs </footer>
+    <script>
+        $list = document.querySelector('#list');
+        fetch('https://remoteok.io/api')
+            .then(res => res.json())
+            .then(jobs => {
+                jobs.forEach(job => {
+                    if (job.position && job.url) {
+                        $link = document.createElement('a');
+                        $link.setAttribute('href', job.url);
+                        $link.innerText = `${job.date} - ${job.position}`;
+                        $list.appendChild($link);
+                    }
+                });
+            });
+    </script>
+</body>
+
+</html>
