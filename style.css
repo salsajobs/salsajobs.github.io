@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 html, body {
     margin: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -11,24 +14,35 @@ body {
 }
 
 header {
-    height: 80px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0 30px;
     text-transform: uppercase;
 }
 
 header a {
     text-decoration: none;
+    color: #333;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 header nav a {
-    margin-left: 20px;
+    margin: auto 10px;
+}
+
+header nav a:hover {
+    color: #555;
+    text-decoration: underline;
 }
 
 main {
     height: 100%;
+    padding: 30px;
 }
 
 iframe {
@@ -36,4 +50,12 @@ iframe {
     margin: auto;
     width: 100%;
     height: 100%;
+}
+
+@media all and (min-width: 786px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 30px;
+    }
 }
